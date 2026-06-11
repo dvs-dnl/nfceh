@@ -48,7 +48,8 @@
         <li><a href="/love-thy-unhoused-neighbor/">Love Thy Unhoused Neighbor</a>
           <ul class="sub">
             <li><a href="/love-thy-unhoused-neighbor/">The Church&rsquo;s Role</a></li>
-            <li><a href="/learn/">Resources</a></li>
+            <li><a href="/learn/">Learn</a></li>
+            <li><a href="/resources/">Resources</a></li>
           </ul>
         </li>
         <li><a href="/blog/">Blog</a></li>
@@ -78,18 +79,55 @@
     <div class="wrap narrow">
       <div class="prose">
         <p>Homelessness is rising in communities across the country. The need is real. But so is the confusion. Most congregations that want to engage don&rsquo;t know where to start, aren&rsquo;t sure what actually works, or have tried things that didn&rsquo;t go the way they hoped. This blog is an attempt to close that gap &mdash; with honest writing, grounded in experience, organized around what faith communities can realistically do.</p>
-        <p>You&rsquo;ll find essays, how-to guides, and stories from people doing this work on the ground. There&rsquo;s no curriculum and no right order. Start wherever you are.</p>
+        <p>Every post is tagged by what it&rsquo;s for: <strong>Cornerstone</strong> essays anchor the whole body of work, <strong>Educate</strong> posts explain how homelessness and its solutions actually work, <strong>Action</strong> posts give your congregation concrete next steps, and <strong>Foundational</strong> posts lay out the convictions underneath it all. There&rsquo;s no curriculum and no right order. Start wherever you are.</p>
       </div>
 
-      <div class="post-card">
+      <div class="chip-row" role="group" aria-label="Filter posts by type">
+        <button class="chip active" data-type="all">All Posts</button>
+        <button class="chip" data-type="cornerstone">Cornerstone</button>
+        <button class="chip" data-type="educate">Educate</button>
+        <button class="chip" data-type="action">Action</button>
+        <button class="chip" data-type="foundational">Foundational</button>
+      </div>
+
+      <div class="post-card" data-type="cornerstone">
         <span class="tag">Cornerstone</span>
         <h2><a href="/blog/how-faith-communities-can-help-end-homelessness/">How Faith Communities Can Help End Homelessness</a></h2>
-        <p class="post-meta">By Kevin Nye</p>
+        <p class="post-meta">By Kevin Nye &middot; June 2026</p>
         <p>What homelessness actually is, why compassion alone isn&rsquo;t enough, and how your congregation can help end it &mdash; not just manage it. A practitioner&rsquo;s guide, from theology to the shelter floor to what the evidence actually says works.</p>
         <a class="card-link" href="/blog/how-faith-communities-can-help-end-homelessness/">Read the essay &rarr;</a>
       </div>
 
-      <div class="notice">More is on the way &mdash; including <em>Why Charity Alone Cannot End Homelessness</em> and <em>What Is a Continuum of Care?</em> <a href="https://mailchi.mp/nfceh/national-faith-coalition-to-end-homelessness">Get the newsletter</a> and new essays will come to you.</div>
+      <div class="post-card soon" data-type="educate">
+        <span class="tag t-educate">Educate</span><span class="soon-badge">Coming Soon</span>
+        <h2>What Is a Continuum of Care?</h2>
+        <p>Every region in the country has a coordinated body planning its homelessness response. Most church members have never heard of it. Understanding your local CoC is the single fastest way to find the work already happening near you.</p>
+      </div>
+
+      <div class="post-card soon" data-type="educate">
+        <span class="tag t-educate">Educate</span><span class="soon-badge">Coming Soon</span>
+        <h2>Why Charity Alone Cannot End Homelessness</h2>
+        <p>Meals, coats, and shelter beds ease suffering &mdash; and they matter. But easing homelessness and ending it are different projects. What the difference is, and why congregations are positioned to do both.</p>
+      </div>
+
+      <div class="post-card soon" data-type="action">
+        <span class="tag t-action">Action</span><span class="soon-badge">Coming Soon</span>
+        <h2>What Churches Get Wrong About Homelessness</h2>
+        <p>Most congregational missteps come from good intentions pointed at the wrong model. The most common patterns &mdash; and the practical corrections that turn compassion into impact.</p>
+      </div>
+
+      <div class="notice">New essays land here first &mdash; and in the newsletter. <a href="https://mailchi.mp/nfceh/national-faith-coalition-to-end-homelessness">Sign up</a> and they&rsquo;ll come to you.</div>
+    </div>
+  </section>
+
+  <section class="section-cream">
+    <div class="wrap narrow center">
+      <h2>Want the background first?</h2>
+      <p class="lede" style="margin-top:12px">The Learn page covers what homelessness is, what causes it, and what actually works &mdash; in one place.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-primary" href="/learn/">Start Learning</a>
+        <a class="btn btn-outline" href="/resources/">Browse Resources</a>
+      </div>
     </div>
   </section>
 
@@ -132,6 +170,22 @@
   </div>
   <div class="footer-bottom">&copy; 2026 by NFCEH.org &middot; All Rights Reserved &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/accessibility/">Accessibility</a></div>
 </footer>
-
+<script>
+(function () {
+  var chips = document.querySelectorAll(".chip");
+  var cards = document.querySelectorAll(".post-card");
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      chips.forEach(function (c) { c.classList.remove("active"); });
+      chip.classList.add("active");
+      var type = chip.getAttribute("data-type");
+      cards.forEach(function (card) {
+        var match = type === "all" || card.getAttribute("data-type") === type;
+        card.style.display = match ? "" : "none";
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
